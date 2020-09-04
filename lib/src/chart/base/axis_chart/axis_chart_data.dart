@@ -330,15 +330,22 @@ class SideTitles with EquatableMixin {
 class FlSpot with EquatableMixin {
   final double x;
   final double y;
+  final double multiplyFactor;
+  final Color color;
+  final String type;
 
   /// [x] determines cartesian (axis based) horizontally position
   /// 0 means most left point of the chart
   ///
   /// [y] determines cartesian (axis based) vertically position
   /// 0 means most bottom point of the chart
-  FlSpot(double x, double y)
+  /// 0 means most bottom point of the chart
+  FlSpot(double x, double y, {double factor = 1, Color color, String type,})
       : x = x,
-        y = y;
+        y = y,
+        multiplyFactor = factor,
+        color = color,
+        type = type;
 
   /// Copies current [FlSpot] to a new [FlSpot],
   /// and replaces provided values.

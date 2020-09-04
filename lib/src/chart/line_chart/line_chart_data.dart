@@ -1548,7 +1548,7 @@ List<LineTooltipItem> defaultLineTooltipItem(List<LineBarSpot> touchedSpots) {
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
-    return LineTooltipItem(touchedSpot.y.toString(), textStyle);
+    return LineTooltipItem(touchedSpot.y.toString(), textStyle: textStyle);
   }).toList();
 }
 
@@ -1593,8 +1593,10 @@ class LineTooltipItem with EquatableMixin {
   /// Style of showing text.
   final TextStyle textStyle;
 
+  final String xValue;
+  
   /// Shows a [text] with [textStyle] as a row in the tooltip popup.
-  LineTooltipItem(this.text, this.textStyle);
+  LineTooltipItem(this.text, {this.textStyle, this.xValue});
 
   /// Used for equality check, see [EquatableMixin].
   @override

@@ -1127,7 +1127,17 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       if (tooltipItem == null) {
         continue;
       }
-
+      if (i == 0 && tooltipItem.xValue != null) {
+        final TextSpan span = TextSpan(style: TextStyle(color: Colors.white, fontSize: 10.0), text: tooltipItem.xValue);
+        final TextPainter tp = TextPainter(
+            text: span,
+            textAlign: TextAlign.center,
+            textDirection: TextDirection.ltr,
+            textScaleFactor: textScale);
+        tp.layout(maxWidth: tooltipData.maxContentWidth);
+        drawingTextPainters.add(tp);
+      }
+      
       final TextSpan span = TextSpan(style: tooltipItem.textStyle, text: tooltipItem.text);
       final TextPainter tp = TextPainter(
           text: span,
